@@ -8,14 +8,12 @@ df = pd.read_csv("database_titanic.csv")
 st.write("CONTROL3")
 
 with st.sidebar:
-    st.write("barra")
+    div = st.slider('Número de bins:', 0, 10, 2)
+    st.write("Bins=", div)
+    
 
 st.header("Análisis de supervivientes")
-
-div = st.slider('Número de bins:', 0, 10, 2)
-st.write("Bins=", div)
-
-
+st.write("En en grafico a continuacion podemos ver un grafico comparativo de sobrevivientes y no sobrevivientes del Titanic.")
 
 datos_sexo = df.groupby('Sex')['Survived'].value_counts().unstack()
 datos_sexo = datos_sexo.rename(columns={0: 'No Sobrevivió', 1: 'Sobrevivió'})
